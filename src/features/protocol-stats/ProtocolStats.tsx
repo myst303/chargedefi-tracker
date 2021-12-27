@@ -2,6 +2,7 @@ import React from 'react';
 import StatCard from "../boardroom/components/StatCard/StatCard";
 import {Flex, Heading, SimpleGrid} from "@chakra-ui/react";
 import {useProtocolStats} from "../hooks/useProtocolStats";
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 
 const ProtocolStats = () => {
 

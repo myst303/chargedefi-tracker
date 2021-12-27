@@ -1,5 +1,7 @@
 import {formatUS} from "../../common/helpers/formating";
 import {fromWei} from "../../common/helpers/web3-helpers";
+import bscscan, { contract } from 'bsc-scan'
+
 import {useEffect, useState} from "react";
 import {useWalletAddress} from "../../common/contexts/WalletAddressContext";
 import {useTokenPrices} from "../overview/hooks/useTokePrices";
@@ -8,6 +10,9 @@ import {boardroomAddress} from "../../common/helpers/consts";
 
 const Web3 = require("web3")
 const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
+
+bscscan.setUrl('https://api.bscscan.com')
+bscscan.setApiKey('2W6DVXP23CY5BF92MAK1RHBF6XE8SJJHIQ')
 
 export const useBoardRoomCharge = () => {
     const {walletAddress} = useWalletAddress()!
@@ -28,8 +33,8 @@ export const useBoardRoomCharge = () => {
             const balanceOfCharge = await boardroomC.methods.balanceOf(walletAddress).call()
             setChargeInvested(formatUS(fromWei(balanceOfCharge)))
             setChargeInvestedDollar(fromWei(balanceOfCharge) * coins[2].price)
-
-
+            
+            // console.log(new Date(await boardroomC.methods.nextEpochPoint().call() * 1e3))
         }
     }
 

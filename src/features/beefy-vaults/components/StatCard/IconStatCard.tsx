@@ -1,12 +1,11 @@
 import {
     Box,
-    Circle,
     Flex,
     Heading,
     HStack,
     Text,
     Image,
-    useColorModeValue as mode,
+    useColorModeValue as mode, Skeleton,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { Indicator } from './Indicator'
@@ -50,18 +49,25 @@ export const IconStatCard = (props: StatCardProps) => {
         <Box bg={mode('white', 'gray.700')} px="6" py="4" shadow="base" rounded="lg" w="100%" mr={5}>
             <HStack>
                 <Image w={w} h={h} src={icon} bg={mode('white', 'gray.500')} rounded="full"/>
-                <Text fontWeight="bold" fontSize="20px" color={mode('gray.500', 'white')}>
-                    {topValue}
-                </Text>
-            </HStack>
+                <Skeleton isLoaded={topValue !== undefined} w="100%" h="30px">
+                    <Text fontWeight="bold" fontSize="20px" color={mode('gray.500', 'white')}>
 
-            <Heading as="h4" size="lg" my="3" fontWeight="extrabold">${format(value)}</Heading>
+                        {topValue}
+                    </Text>
+                </Skeleton>
+            </HStack>
+            {console.log(value)}
+            <Skeleton isLoaded={value !== undefined}>
+                <Heading as="h4" size="lg" my="3" fontWeight="extrabold">${format(value)}</Heading>
+            </Skeleton>
+
             <Flex justify="space-between" align="center" fontWeight="medium" fontSize="sm">
                 {changeDaily &&
                 <HStack spacing="0" color={mode('black', 'gray.400')}>
-                    <Indicator type={isNegative ? 'down' : 'up'} />
-                    <Text>${format(changeDaily.value)} ({isNegative ? '' : '+'}{changeDaily.percent}%)
-                    </Text>
+                    <Skeleton isLoaded={changeDaily !== undefined}>
+                        <Indicator type={isNegative ? 'down' : 'up'} />
+                        <Text>${format(changeDaily.value)} ({isNegative ? '' : '+'}{changeDaily.percent}%)</Text>
+                    </Skeleton>
                 </HStack>
                 }
                 <Text color={mode('black', 'white')}>{symbol}</Text>

@@ -1,5 +1,4 @@
-import boardRoomContract from "../contracts/single-token-boardroom.json";
-import {boardroomAddress, chargeAddress, staticAddress, treasuryAddress} from "../../common/helpers/consts";
+import {chargeAddress, staticAddress, treasuryAddress} from "../../common/helpers/consts";
 import treasuryContract from "../contracts/treasury.json";
 import staticContract from "../../common/contracts/static.json";
 import chargeContract from "../../common/contracts/charge.json";
