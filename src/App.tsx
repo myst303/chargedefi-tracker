@@ -1,26 +1,38 @@
+import {Flex, Heading } from '@chakra-ui/react'
+import "@fontsource/metropolis"
+import {useMemo, useState} from "react";
+import {WalletAddressContext} from './common/contexts/WalletAddressContext';
+import TopNavBar from "./common/components/TopNavBar/TopNavBar";
+import {useTokenPrices} from "./features/overview/hooks/useTokePrices";
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Earnings from "./features/beefy-vaults/components/Earnings";
+import {default as BoardRoomMain} from "./features/boardroom/Main"
+import ProtocolStats from "./features/protocol-stats/ProtocolStats";
+import ExpansionStats from "./features/protocol-stats/ExpansionStats/ExpansionStats";
+import ConnectDapp from "./common/components/ConnectDapp/ConnectDapp";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+    const [walletAddress, setWalletAddress] = useState<string>();
+    const providerValue = useMemo<any>(() => ({ walletAddress, setWalletAddress }), [walletAddress, setWalletAddress])
+
+    const { } = useTokenPrices()
+    return (
+        <WalletAddressContext.Provider value={providerValue}>
+            <Flex w="100vw" h="100vh" flexDir="column" px={12} py={8} overflowX="hidden">
+                <TopNavBar/>
+                {walletAddress
+                    ? <>
+                        <ProtocolStats/>
+                        <ExpansionStats/>
+                        <Earnings/>
+                        <BoardRoomMain/>
+                    </>
+                : <ConnectDapp/>}
+            </Flex>
+        </WalletAddressContext.Provider>
+
+    )
+}
+export default App
