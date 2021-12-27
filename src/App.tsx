@@ -22,6 +22,7 @@ function App() {
         <WalletAddressContext.Provider value={providerValue}>
             <Flex w="100vw" h="100vh" flexDir="column" px={12} py={8} overflowX="hidden">
                 <TopNavBar/>
+                
                 {walletAddress
                     ? <>
                         <ProtocolStats/>
