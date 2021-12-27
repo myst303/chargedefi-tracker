@@ -51,12 +51,10 @@ export const IconStatCard = (props: StatCardProps) => {
                 <Image w={w} h={h} src={icon} bg={mode('white', 'gray.500')} rounded="full"/>
                 <Skeleton isLoaded={topValue !== undefined} w="100%" h="30px">
                     <Text fontWeight="bold" fontSize="20px" color={mode('gray.500', 'white')}>
-
                         {topValue}
                     </Text>
                 </Skeleton>
             </HStack>
-            {console.log(value)}
             <Skeleton isLoaded={value !== undefined}>
                 <Heading as="h4" size="lg" my="3" fontWeight="extrabold">${format(value)}</Heading>
             </Skeleton>
