@@ -1,7 +1,7 @@
 # ChargeDefi Tracker
 #### [chargedefitracker.com](https://chargedefitracker.com/)
 
-This project was created so I can easily track all of my investments across different the different ChargeDefi vaults, farms and boardroom in one tab.
+This project was created so I can easily track all of my investments across the different ChargeDefi vaults, farms and boardroom in one tab.
 
 ## Features
 - Boardroom tracking
