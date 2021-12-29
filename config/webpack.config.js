@@ -616,7 +616,7 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
 // Generates an `index.html` file with the <script> injected.
-      new BundleAnalyzerPlugin(),
+//       new BundleAnalyzerPlugin(),
       new HtmlWebpackPlugin(
           Object.assign(
               {},
