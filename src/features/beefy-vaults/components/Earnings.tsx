@@ -19,12 +19,12 @@ const Earnings = () => {
                       symbol: 'Charge-BUSD LP / Dollar Amount',
                       value: chargeLpDv!,
                       topValue: chargeLp!,
-                      changeDaily: { value: 24.98, percent: -0.73 },
+                      // changeDaily: { value: 24.98, percent: -0.73 },
                   }}
                 />
                 <IconStatCard
                     imgData={{
-                        icon: "https://www.chargedefi.fi/static/media/charge-busd.fffca344.png",
+                        icon: "https://www.chargedefi.fi/static/media/static-busd.00622597.png",
                         w: "83px",
                         h: "50px"
                     }}
@@ -32,7 +32,7 @@ const Earnings = () => {
                         symbol: 'Static-BUSD LP / Dollar Amount',
                         value: staticLpDv!,
                         topValue: staticLp!,
-                        changeDaily: { value: 24.98, percent: -0.73 },
+                        // changeDaily: { value: 24.98, percent: -0.73 },
                     }}
                 />
             </SimpleGrid>

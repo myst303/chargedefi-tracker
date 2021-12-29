@@ -5,7 +5,7 @@ import {boardroomAddress, staticAddress, treasuryAddress} from "../../common/hel
 import treasuryContract from "../contracts/treasury.json";
 import staticContract from "../../common/contracts/static.json";
 import {fromWei} from "../../common/helpers/web3-helpers";
-import {useTokenPrices} from "../overview/hooks/useTokePrices";
+import {useTokenPrices} from "../../common/contexts/TokenPricesContext";
 
 
 const Web3 = require("web3")
@@ -27,7 +27,8 @@ function format(value: number) {
 
 export const useProtocolStats = () => {
     const {walletAddress} = useWalletAddress()!
-    const {coins} = useTokenPrices()
+    const {tokens} = useTokenPrices()!
+    const { staticPrice, } = tokens
 
     const initialState ={
         epoch: null,
@@ -54,7 +55,7 @@ export const useProtocolStats = () => {
             dispatch({type: "updateState", name: "epochUnderOne", value: i}))
         staticC.methods.totalSupply().call().then((i:any) =>
             dispatch({type: "updateState", name: "expansionDollarValue",
-                value: format((coins[0].price - 1.01) * 0.1 * parseInt(fromWei(i))) })
+                value: format((staticPrice - 1.01) * 0.1 * parseInt(fromWei(i))) })
             // console.log(parseInt(fromWei(i)))
 
         )
@@ -90,8 +91,8 @@ export const useProtocolStats = () => {
     }, [state.nextEpochDate])
 
     useEffect(() => {
-        if(coins.length > 0) get()
-    }, [coins])
+        if(staticPrice > 0) get()
+    }, [staticPrice])
 
     return {
         ...state

@@ -1,13 +1,16 @@
 {
-  "static":{
+  "static":
+  {
     "name": "Static",
     "icon": "https://www.chargedefi.fi/static/media/static.180ec003.png"
   },
-  "charge":{
+  "charge":
+  {
   "name": "Charge",
   "icon": "https://www.chargedefi.fi/static/media/charge.53089c19.png"
   },
-  "pulse":{
+  "pulse":
+  {
   "name": "Pulse",
   "icon": "https://www.chargedefi.fi/static/media/pulse.d06a42ec.png"
   },

@@ -1,0 +1,11 @@
+
+.hovEl {
+    padding: 5px;
+}
+
+.hovEl:hover {
+    background-color: #EDF2F7;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

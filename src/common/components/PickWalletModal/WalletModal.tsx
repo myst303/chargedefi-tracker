@@ -1,4 +1,5 @@
-import { Modal, ModalHeader, ModalContent, ModalOverlay, ModalBody, ModalCloseButton, ModalFooter, List, ListItem, Text, Image, Box, Flex, Button } from '@chakra-ui/react';
+import { Modal, ModalHeader, ModalContent, ModalOverlay, useColorModeValue as mode,
+    ModalBody, ModalCloseButton, ModalFooter, List, ListItem, Text, Image, Box, Flex, Button } from '@chakra-ui/react';
 import wallets from "./wallets.json"
 import React from 'react';
 import {useHoverHighlight} from "../../hooks/useHoverHighlight";
@@ -13,10 +14,11 @@ type Props = {
 const WalletModal = ({isOpen, onClose, onSelectWallet}: Props) => {
 
     const { walletAddress, setWalletAddress } = useWalletAddress()!
-
-    const { hooverProps: hovProps1} = useHoverHighlight()
-    const { hooverProps: hovProps2} = useHoverHighlight()
-    const hoovList = [hovProps1, hovProps2]
+    const logout = () => {
+        setWalletAddress(undefined)
+        localStorage.removeItem("wallet")
+        onClose()
+    }
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} size={walletAddress ? "lg": "sm"} closeOnOverlayClick={false}>
@@ -28,9 +30,9 @@ const WalletModal = ({isOpen, onClose, onSelectWallet}: Props) => {
                 <ModalBody>
                     <List spacing={2}>
                         {wallets.map((i:any, key:number) => {
-                            return <ListItem key={i.name}  onClick={() => onSelectWallet(i.name)} {...hoovList[key]}>
+                            return <ListItem key={i.name}  onClick={() => onSelectWallet(i.name)} className="hovEl">
                                 <Flex justify="space-between" px={5}>
-                                    <Text my="auto">{i.name}</Text>
+                                    <Text my="auto" textColor={mode("black", "white")}>{i.name}</Text>
                                     <Image my="auto" src={i.icon} h="40px" w="40px"/>
                                 </Flex>
                             </ListItem>
@@ -51,7 +53,7 @@ const WalletModal = ({isOpen, onClose, onSelectWallet}: Props) => {
                     </Flex>
                 </ModalBody>
                 <ModalFooter>
-                    <Button colorScheme="blue" onClick={() => setWalletAddress(undefined)}>Logout</Button>
+                    <Button colorScheme="blue" onClick={logout}>Logout</Button>
                 </ModalFooter>
             </ModalContent>
             }

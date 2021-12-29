@@ -6,48 +6,73 @@ import {useDisclosure} from "@chakra-ui/react";
 export const useWalletProvider = () => {
     const {isOpen, onOpen, onClose} = useDisclosure()
     const {walletAddress, setWalletAddress} = useWalletAddress()!;
+    const wallet = localStorage.getItem("wallet")
 
 
     useEffect(() => {
         // invoke method on bsc e.g.
+        checkIfWalletConnected()
+    }, [wallet])
 
-    }, [])
+    const checkIfWalletConnected = async() => {
+        if(wallet) {
+            const {BinanceChain} = window as any
+            const {ethereum} = window as any
+            if(ethereum || BinanceChain) {
+                switch (wallet) {
+                    case "metamask":
+                        await reconnectWallet(ethereum)
+                        break;
+                    case "binance":
+                        await reconnectWallet(BinanceChain)
+                        break;
+                }
+            }
+        } else {}
+    }
 
-    // const checkIfWalletConnected = async() => {
-    //     try {
-    //         if (!ethereum) {
-    //             alert("Get MetaMask you pleb :P!");
-    //             // console.log("Make sure you to have metamask!")
-    //             return;
-    //         } else {
-    //             // console.log("We have an ether object", ethereum)
-    //         }
-    //
-    //         /*
-    //          * Check if we're authorized to access the user's wallet
-    //          */
-    //         const accounts = await ethereum.request({ method: 'eth_accounts' });
-    //         if (accounts.length !== 0) {
-    //             const account = accounts[0];
-    //             // console.log("Found an authorized account:", account);
-    //             setCurrentAccount(account)
-    //         } else {
-    //             // console.log("No authorized account found")
-    //         }
-    //
-    //
-    //     } catch (error:any) {
-    //         alert("An error occurred connecting your wallet");
-    //     }
-    // }
+    const reconnectWallet = async(walletProvider: any) => {
+        if (!walletProvider) {
+            console.log("Make sure you to have a wallet provider!")
+            return;
+        }
+        // Check if we're authorized to access the user's wallet
+        const accounts = await walletProvider.request({ method: 'eth_accounts' });
+        if (accounts.length !== 0) {
+            const account = accounts[0];
+            console.log("Found an authorized account:", account);
+            setWalletAddress(account)
+        } else {
+            console.log("nothing found")
+        }
+    }
 
     const onConnectWallet = async (walletProvider: string) => {
         switch (walletProvider){
             case "Binance Chain Wallet":
                 await connectBinanceWallet()
                 break;
+            case "Metamask":
+                await _connectMetamaskWallet()
+                break;
             default:
                 break;
+        }
+    }
+
+    const _connectMetamaskWallet = async() => {
+        const { ethereum  } = window as any
+        try {
+            if (!ethereum) {
+                return;
+            }
+            const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+            setWalletAddress(accounts[0]);
+            localStorage.setItem("wallet", "metamask")
+            onClose()
+        } catch (error) {
+            // console.log(error)
+            alert("An error occurred connecting your wallet");
         }
     }
 
@@ -55,20 +80,20 @@ export const useWalletProvider = () => {
         const { BinanceChain  } = window as any
         try {
             if (!BinanceChain) {
-                alert("Get Binance Chain you pleb :P!");
                 return;
             }
             const accounts = await BinanceChain.request({ method: "eth_requestAccounts" });
             setWalletAddress(accounts[0]);
+            localStorage.setItem("wallet", "binance")
             onClose()
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             alert("An error occurred connecting your wallet");
         }
     }
 
     return {
-        onOpen, onClose, isOpen,
-        onConnectWallet, walletAddress
+        onOpen, onClose, isOpen, wallet,
+        onConnectWallet, checkIfWalletConnected, walletAddress
     }
 }
