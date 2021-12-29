@@ -10,7 +10,7 @@ const Farms = () => {
     return (
       <>
           <Heading py={5} px={5}>Farms </Heading>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing="6" pt={5}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing="6" pt={5} px={5}>
               <IconStatCard
                   imgData={{
                       icon: "https://www.chargedefi.fi/static/media/static-busd.00622597.png",
