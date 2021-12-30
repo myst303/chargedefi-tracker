@@ -2,30 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ffc3dbc-5656-4905-ba1b-44d0f1415b80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/overview/components/beefy-vaults/BeefyVaults.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/overview/components/boardroom/hooks/useBoardroomCharge.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/assets/coins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/assets/coins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/components/ConnectDapp/ConnectDapp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/ConnectDapp/ConnectDapp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ColorModeSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/ColorModeSwitcher/ColorModeSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/assets/coins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/assets/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/components/PickWalletModal/WalletModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/PickWalletModal/WalletModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/components/TopNavBar/TopNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/TopNavBar/TopNavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/contexts/TokenPricesContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/contexts/TokenPricesContext.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/contexts/WalletAddressContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/contexts/WalletAddressContext.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/contracts/charge.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/contracts/charge_abi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/contracts/pulse.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/contracts/pulse_abi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/contracts/static.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/contracts/static_abi.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/helpers/consts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/helpers/consts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/hooks/useWalletProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/hooks/useWalletProvider.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/components/Earnings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/beefy-vaults/components/Earnings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/components/StatCard/IconStatCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/beefy-vaults/components/StatCard/IconStatCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/components/StatCard/Indicator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/beefy-vaults/components/StatCard/Indicator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/hooks/useBoardRoomLp.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/hooks/useBoardRoomLp.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/hooks/useBoardroomCharge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/hooks/useBoardroomCharge.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/hooks/useExpansionStats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/hooks/useExpansionStats.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/hooks/useProtocolStats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/hooks/useProtocolStats.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/overview/hooks/useTokePrices.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/protocol-stats/ExpansionStats/ExpansionStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/protocol-stats/ExpansionStats/ExpansionStats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/helpers/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/helpers/util.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/hooks/useHoverHighlight.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/components/Earnings.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/components/StatCard/IconStatCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/IconStatCard/IconStatCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/components/StatCard/Indicator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/IconStatCard/Indicator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/contracts/charge-busd.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/beefy-vaults/contracts/beefy-static-abi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/contracts/static-busd.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/beefy-vaults/contracts/beefy-charge-abi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/beefy-vaults/hooks/useBeefyVaults.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/beefy-vaults/hooks/useBeefyVaults.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/boardroom/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/boardroom/BoardRoom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/boardroom/components/BoardroomCharge/BoardroomCharge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/boardroom/BoardroomCharge/BoardroomCharge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/boardroom/components/BoardroomLp/BoardRoomLp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/boardroom/BoardroomLp/BoardRoomLp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/boardroom/components/StatCard/Stat.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/boardroom/components/StatCard/StatCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/boardroom/components/StatCard/StatLabel.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/boardroom/components/StatCard/StatNumber.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/contracts/boardroom-allocation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/contracts/boardroom-allocation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/contracts/farms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/contracts/farms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/contracts/lp-token-boardroom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/contracts/lp-token-boardroom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/contracts/single-token-boardroom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/contracts/charge-boardroom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/contracts/static-busd-lp.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/contracts/static-busd-lp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/contracts/static-oracle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/contracts/static-oracle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/contracts/treasury.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/contracts/treasury.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/farms/components/Farms.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/farms/Farms.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/hooks/useBoardRoomLp.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/boardroom/hooks/useBoardRoomLp.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/hooks/useBoardroomCharge.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/hooks/useExpansionStats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/protocol-stats/hooks/useExpansionStats.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/hooks/useFarms.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/farms/hooks/useFarms.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/hooks/useProtocolStats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/protocol-stats/hooks/useProtocolStats.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/hooks/useTreasury.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/protocol-stats/ExpansionStats/ExpansionStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/protocol-stats/ExpansionStats/ExpansionStats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/protocol-stats/ProtocolStats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/overview/components/protocol-stats/ProtocolStats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test-utils.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,11 +109,11 @@
       <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\public" />
-      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\features\hooks" />
-      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\features" />
-      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\features\beefy-vaults\components" />
-      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\features\beefy-vaults" />
+      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\pages\overview\components\protocol-stats\hooks" />
+      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\common\components\ColorModeSwitcher" />
+      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\pages\overview\components\boardroom\hooks" />
+      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\pages\overview\components\farms\hooks" />
+      <recent name="C:\crypto\defi-2.0\chargedefi\chargedefi-app-tracker\src\common\components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -101,7 +131,9 @@
       <workItem from="1640700072412" duration="12017000" />
       <workItem from="1640716973521" duration="16000" />
       <workItem from="1640723132473" duration="606000" />
-      <workItem from="1640727196863" duration="10914000" />
+      <workItem from="1640727196863" duration="12331000" />
+      <workItem from="1640777265506" duration="1962000" />
+      <workItem from="1640862621346" duration="31935000" />
     </task>
     <servers />
   </component>

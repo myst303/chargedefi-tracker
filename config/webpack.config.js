@@ -423,7 +423,7 @@ module.exports = function (webpackEnv) {
               },
             },
 // Process application JS with Babel.
-// The preset includes JSX, Flow, TypeScript, and some ESnext features.
+// The preset includes JSX, Flow, TypeScript, and some ESnext pages.
             {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
               include: paths.appSrc,
@@ -475,7 +475,7 @@ module.exports = function (webpackEnv) {
               },
             },
 // Process any JS outside of the app with Babel.
-// Unlike the application JS, we only compile the standard ES features.
+// Unlike the application JS, we only compile the standard ES pages.
             {
               test: /\.(js|mjs)$/,
               exclude: /@babel(?:\/|\\{1,2})runtime/,

@@ -2,7 +2,6 @@ import { Modal, ModalHeader, ModalContent, ModalOverlay, useColorModeValue as mo
     ModalBody, ModalCloseButton, ModalFooter, List, ListItem, Text, Image, Box, Flex, Button } from '@chakra-ui/react';
 import wallets from "./wallets.json"
 import React from 'react';
-import {useHoverHighlight} from "../../hooks/useHoverHighlight";
 import {useWalletAddress} from "../../contexts/WalletAddressContext";
 
 type Props = {

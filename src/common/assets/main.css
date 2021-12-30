@@ -9,3 +9,29 @@
     cursor: pointer;
 }
 
+::-webkit-scrollbar {
+    position            : relative;
+    background          : rgba(0, 0, 0, .1);
+    height: 8px;
+    width               : 8px;
+    border-radius       : 4px;
+    top                 : 0;
+    z-index             : 2;
+    cursor              : pointer;
+    opacity: 0;
+    transition: opacity 0.25s linear;
+    /*display: none;*/
+    /*width: 0px;*/
+    /*background: transparent; !* make scrollbar transparent *!*/
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: darkgrey;
+    width               : 9px;
+    border-radius       : 4px;
+    top                 : 0;
+    z-index             : 2;
+    cursor              : pointer;
+    opacity: 0;
+}
