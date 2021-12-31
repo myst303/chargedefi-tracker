@@ -14,8 +14,8 @@ const BoardRoomLp = () => {
                     token="static-busd"
                     data={{
                         symbol: 'Static-BUSD',
-                        value: stats.tokens,
-                        topValue: stats.value,
+                        value: stats.value,
+                        topValue: stats.tokens,
                         tvl: stats.tvl
                     }}
                 />
