@@ -13,7 +13,7 @@ const BoardRoomLp = () => {
                 <InvestedCard
                     token="static-busd"
                     data={{
-                        symbol: 'Static-BUSD invested',
+                        symbol: 'Static-BUSD',
                         value: stats.tokens,
                         topValue: stats.value,
                         tvl: stats.tvl

@@ -41,19 +41,19 @@ export const useProtocolStats = () => {
     const [state, dispatch] = useReducer(reducer, initialState, initState)
 
     // Contract objects
-    const boardroomC = new web3.eth.Contract(boardRoomContract, chargeBoardroomAddress, {from: walletAddress})
-    const treasuryC = new web3.eth.Contract(treasuryContract, treasuryAddress, {from: walletAddress})
-    const staticC = new web3.eth.Contract(staticContract, staticAddress, {from: walletAddress})
+    const boardroomC = new web3.eth.Contract(boardRoomContract, chargeBoardroomAddress, {from: walletAddress}).methods
+    const treasuryC = new web3.eth.Contract(treasuryContract, treasuryAddress, {from: walletAddress}).methods
+    const staticC = new web3.eth.Contract(staticContract, staticAddress, {from: walletAddress}).methods
 
 
     const get = async() => {
-        boardroomC.methods.epoch().call().then((epoch:number) =>
+        boardroomC.epoch().call().then((epoch:number) =>
             dispatch({type:"updateState", name:"epoch", value: epoch}))
-        boardroomC.methods.nextEpochPoint().call().then((nextEpoch:number) =>
+        boardroomC.nextEpochPoint().call().then((nextEpoch:number) =>
             dispatch({type:"updateState", name:"nextEpochDate", value:new Date(nextEpoch * 1e3)}))
-        treasuryC.methods.epochsUnderOne.call().call().then((i:any) =>
+        treasuryC.epochsUnderOne.call().call().then((i:any) =>
             dispatch({type: "updateState", name: "epochUnderOne", value: i}))
-        staticC.methods.totalSupply().call().then((i:any) =>
+        staticC.totalSupply().call().then((i:any) =>
             dispatch({type: "updateState", name: "expansionDollarValue",
                 value: format((staticPrice - 1.01) * 0.1 * parseInt(fromWei(i))) })
         )
@@ -86,11 +86,11 @@ export const useProtocolStats = () => {
         if(state.nextEpochDate !== null){
             countdown()
         }
-    }, [])
+    }, [state.nextEpochDate])
 
     useEffect(() => {
         get()
-    }, [])
+    }, [staticPrice])
 
     return {
         ...state

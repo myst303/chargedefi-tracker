@@ -13,7 +13,7 @@ const BoardroomCharge = () => {
                 <InvestedCard
                     token="charge"
                     data={{
-                        symbol: 'Charge Invested',
+                        symbol: 'Charge / $',
                         value: stats.value,
                         topValue: stats.tokens,
                         tvl: stats.tvl

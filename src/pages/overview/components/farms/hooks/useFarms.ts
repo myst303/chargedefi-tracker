@@ -70,7 +70,7 @@ export const useFarms = () => {
 
     useEffect(() => {
         get()
-    },[])
+    },[staticPrice, chargePrice])
 
     return {
         staticBusd, chargeBusd, stats

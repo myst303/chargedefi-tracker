@@ -10,6 +10,8 @@ import {
 import * as React from 'react'
 import { Indicator } from './Indicator'
 import {getTokenUrl} from "../../helpers/util";
+import { useMediaQuery } from '@chakra-ui/react'
+
 
 export interface StatCardProps {
     token: string,
@@ -40,11 +42,12 @@ export const IconStatCard = (props: StatCardProps) => {
 
     const isNegative = changeDaily && changeDaily.percent < 0
 
+
     return (
         <Box bg={mode('white', 'gray.700')} px="6" py="4" shadow="base" rounded="lg" w="100%" mr={5}>
             <HStack>
                 <Image layerStyle={token} src={getTokenUrl(token)} bg={mode('white', 'gray.500')} rounded="full"/>
-                <Skeleton isLoaded={topValue !== undefined && !isNaN(topValue)} w="100%" h="30px">
+                <Skeleton isLoaded={topValue !== undefined || !isNaN(topValue)} w="100%" h="30px">
                     <Text fontWeight="bold" fontSize="20px" color={mode('gray.500', 'white')}>
                         {topValue}
                     </Text>
@@ -58,7 +61,7 @@ export const IconStatCard = (props: StatCardProps) => {
                 {changeDaily &&
                     <HStack spacing="0" color={mode('black', 'gray.400')}>
                         <Skeleton isLoaded={changeDaily.value !== undefined}>
-                            <Flex>
+                            <Flex my="auto">
                                 <Indicator type={isNegative ? 'down' : 'up'} />
                                 <Text>${format(changeDaily.value)} ({isNegative ? '' : '+'}{changeDaily.percent}%)</Text>
                                 <Text mx={2}> Daily</Text>
@@ -66,7 +69,7 @@ export const IconStatCard = (props: StatCardProps) => {
                         </Skeleton>
                     </HStack>
                 }
-                <Text color={mode('black', 'white')}>{symbol}</Text>
+                <Text  color={mode('black', 'white')}>{symbol}</Text>
             </Flex>
         </Box>
     )

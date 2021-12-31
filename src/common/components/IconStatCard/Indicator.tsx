@@ -15,5 +15,5 @@ const types = {
 export const Indicator = (props: IndicatorProps) => {
     const { type } = props
     const { color, icon } = types[type]
-    return <Box as={icon} fontSize="lg" color={color} my="auto" />
+    return <Box as={icon} fontSize="lg" color={color} my="auto" mx="auto"/>
 }

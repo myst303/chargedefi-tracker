@@ -25,7 +25,6 @@ export const useExpansionStats = () => {
     const pulseC = new web3.eth.Contract(pulseContract, pulseAddress, {from: walletAddress})
 
 
-
     const [staticDollarAmount, setStaticDollarAmount] = useState<number>()
     const [staticAmount, setStaticAmount] = useState<any>()
     const [chargeDollarAmount, setChargeDollarAmount] = useState<number>()
@@ -36,7 +35,10 @@ export const useExpansionStats = () => {
     const get = async () => {
         staticC.methods.totalSupply().call().then((i:any) => {
             setStaticDollarAmount((staticPrice - 1.01) * 0.1 * parseInt(fromWei(i)) * staticPrice)
-            setStaticAmount(formatUS((staticPrice - 1.01) * 0.1 * parseInt(fromWei(i))))
+            let amount = (staticPrice - 1.01) * 0.1 * parseInt(fromWei(i))
+            console.log(formatUS(amount))
+            setStaticAmount(formatUS(amount))
+
         })
         let mintLimit = toBN(await chargeC.methods.mintLimitOf(treasuryAddress).call())
         let mintedAmount = toBN(await chargeC.methods.mintedAmountOf(treasuryAddress).call())

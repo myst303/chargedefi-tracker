@@ -48,7 +48,7 @@ export const InvestedCard = (props: StatCardProps) => {
                     <Skeleton isLoaded={tvl !== undefined && !isNaN(tvl)}>
                         <Flex>
                             <Text>${format(tvl)}</Text>
-                            <Text mx={2}> Total Value Locked</Text>
+                            <Text mx={2}> TVL</Text>
                         </Flex>
                     </Skeleton>
                 </HStack>

@@ -75,7 +75,7 @@ function App() {
 
     useEffect(() => {
         getTokenPrices()
-        // setInterval(() => getTokenPrices(), 60000)
+        setInterval(() => getTokenPrices(), 300000)
     }, [])
 
     return (

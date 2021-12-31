@@ -15,7 +15,7 @@ const Farms = () => {
               <InvestedCard
                  token="static-busd"
                   data={{
-                      symbol: 'Static-BUSD Invested / Dollar Amount',
+                      symbol: 'Static-BUSD / $',
                       value: stats.staticLpValue,
                       topValue: stats.chargeLpValue,
                       tvl: stats.staticTVL
@@ -24,7 +24,7 @@ const Farms = () => {
               <IconStatCard
                   token="charge"
                   data={{
-                      symbol: 'Charge Earned / Dollar Amount',
+                      symbol: 'Charge Earned / $',
                       value: stats.staticRewardValue,
                       topValue: stats.staticPoolReward,
                       changeDaily: stats.staticChangeDaily
@@ -33,7 +33,7 @@ const Farms = () => {
               <InvestedCard
                   token="charge-busd"
                   data={{
-                      symbol: 'Charge-BUSD Invested / Dollar Amount',
+                      symbol: 'Charge-BUSD / $',
                       value: stats.chargeLpValue,
                       topValue: stats.chargeLpAmount,
                       tvl: stats.chargeTVL
@@ -42,7 +42,7 @@ const Farms = () => {
               <IconStatCard
                   token="charge"
                   data={{
-                      symbol: 'Charge Earned / Dollar Amount',
+                      symbol: 'Charge Earned / $',
                       value: stats.chargeRewardValue,
                       topValue: stats.chargePoolReward,
                       changeDaily: stats.chargeChangeDaily
