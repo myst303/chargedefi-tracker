@@ -61,8 +61,8 @@ export const useFarms = () => {
             // Stats
             chargeTVL,
             staticTVL,
-            staticChangeDaily: {percent: staticDaily.toFixed(2), value: (staticLpAmount * staticDaily).toFixed(2)},
-            chargeChangeDaily: {percent: chargeDaily.toFixed(2), value: (chargeLpAmount * chargeDaily).toFixed(2)},
+            staticChangeDaily: {percent: staticDaily.toFixed(2), value: (staticLpAmount * staticDaily / 100).toFixed(2)},
+            chargeChangeDaily: {percent: chargeDaily.toFixed(2), value: (chargeLpAmount * chargeDaily / 100).toFixed(2)},
 
         })
     }
