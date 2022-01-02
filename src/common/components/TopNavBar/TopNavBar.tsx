@@ -7,11 +7,12 @@ import { ColorModeSwitcher } from '../ColorModeSwitcher/ColorModeSwitcher';
 import { Skeleton } from "@chakra-ui/react"
 import {useTokenPrices} from "../../contexts/TokenPricesContext";
 import {getTokenUrl} from "../../helpers/util";
+import {NavContent} from "../Navbar/NavContent";
 
 
 const TopNavBar = () => {
     const { onOpen, onClose, isOpen, onConnectWallet, checkIfWalletConnected, wallet, walletAddress } = useWalletProvider()
-    const {tokens, setTokens} = useTokenPrices()!
+    const {tokens} = useTokenPrices()!
     const { staticPrice, pulsePrice, chargePrice} = tokens
 
 
@@ -21,6 +22,8 @@ const TopNavBar = () => {
 
     return (
         <Flex>
+            <NavContent.Desktop display={{ base: 'none', md: 'flex' }} />
+            <NavContent.Mobile display={{ base: 'flex', md: 'none' }} />
             {isOpen && <WalletModal isOpen={isOpen} onClose={onClose} onSelectWallet={onConnectWallet} /> }
             <Spacer/>
             <Flex>
@@ -44,7 +47,7 @@ const TopNavBar = () => {
                 </Flex>
             </Flex>
             <ColorModeSwitcher my="auto" mx={5}/>
-            <Button  justify="flex-end" colorScheme="blue"
+            <Button  justify="flex-end" colorScheme="blue" my="auto"
                     onClick={wallet && !walletAddress ? checkIfWalletConnected : onOpen}>
                 {walletAddress ? formatWalletAddr(walletAddress): "Connect"}
             </Button>
