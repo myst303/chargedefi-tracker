@@ -43,16 +43,17 @@ export const useFarms = () => {
         const chargeTVL = ((await chargeFarmContract.TVL(0).call()) / 1e18).toFixed(0)
         const chargeRewardValue = (chargePoolReward * chargePrice).toFixed(2)
         const staticRewardValue = (staticPoolReward * chargePrice).toFixed(2)
-        const staticLpValue = (staticLpAmount * staticLp).toFixed(2)
-        const chargeLpValue = (chargeLpAmount * chargeLp).toFixed(2)
+        const staticLpValue = (staticLpAmount * staticLp)
+        const chargeLpValue = (chargeLpAmount * chargeLp)
 
-
+        console.log((staticLpAmount * staticDaily / 100).toFixed(2))
+        console.log((chargeLpAmount * chargeDaily / 100).toFixed(2))
         setStats({
             // LPs
             staticLpAmount,
             chargeLpAmount,
-            staticLpValue,
-            chargeLpValue,
+            staticLpValue: staticLpValue.toFixed(2),
+            chargeLpValue: chargeLpValue.toFixed(2),
             // Rewards
             staticPoolReward: staticPoolReward.toFixed(3),
             staticRewardValue,
@@ -61,8 +62,8 @@ export const useFarms = () => {
             // Stats
             chargeTVL,
             staticTVL,
-            staticChangeDaily: {percent: staticDaily.toFixed(2), value: (staticLpAmount * staticDaily / 100).toFixed(2)},
-            chargeChangeDaily: {percent: chargeDaily.toFixed(2), value: (chargeLpAmount * chargeDaily / 100).toFixed(2)},
+            staticChangeDaily: {percent: staticDaily.toFixed(2), value: (staticLpValue * staticDaily / 100).toFixed(2)},
+            chargeChangeDaily: {percent: chargeDaily.toFixed(2), value: (chargeLpValue * chargeDaily / 100).toFixed(2)},
 
         })
     }
