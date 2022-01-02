@@ -54,9 +54,9 @@ export const useFarms = () => {
             staticLpValue,
             chargeLpValue,
             // Rewards
-            staticPoolReward,
+            staticPoolReward: staticPoolReward.toFixed(3),
             staticRewardValue,
-            chargePoolReward,
+            chargePoolReward: chargePoolReward.toFixed(3),
             chargeRewardValue,
             // Stats
             chargeTVL,

@@ -17,7 +17,7 @@ const Farms = () => {
                   data={{
                       symbol: 'Static-BUSD / $',
                       value: stats.staticLpValue,
-                      topValue: stats.chargeLpValue,
+                      topValue: stats.staticLpAmount,
                       tvl: stats.staticTVL
                   }}
               />
