@@ -7,15 +7,13 @@ import TopNavBar from "./common/components/TopNavBar/TopNavBar";
 import {useColorModeValue as mode } from "@chakra-ui/react";
 import React from 'react';
 import "./common/assets/main.css"
-import BeefyVaults from "./pages/overview/components/beefy-vaults/BeefyVaults";
-import {default as BoardRoomMain} from "./pages/overview/components/boardroom/BoardRoom"
-import ProtocolStats from "./pages/overview/components/protocol-stats/ProtocolStats";
-import ExpansionStats from "./pages/overview/components/protocol-stats/ExpansionStats/ExpansionStats";
-import ConnectDapp from "./common/components/ConnectDapp/ConnectDapp";
-import Farms from "./pages/overview/components/farms/Farms";
 import {busdAddress, CHARGE_LP_ADDRESS, CHARGE_ADDRESS, STATIC_LP_ADDRESS, staticAddress} from "./common/helpers/consts";
 import chargeABI from "./common/contracts/charge_abi.json"
 import lpABI from "./pages/overview/contracts/lp-token-boardroom.json"
+import {BrowserRouter , Routes, Route, Link} from "react-router-dom";
+import {default as OverviewMain} from "./pages/overview/Main"
+import {default as EarningsMain} from "./pages/earnings/Main"
+
 
 const Web3 = require("web3")
 const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
@@ -71,8 +69,6 @@ function App() {
             })
     }
 
-
-
     useEffect(() => {
         getTokenPrices()
         setInterval(() => getTokenPrices(), 300000)
@@ -81,17 +77,18 @@ function App() {
     return (
         <TokenPricesContext.Provider value={providedTokens}>
             <WalletAddressContext.Provider value={providedWallet}>
-                <Flex w="100vw" h="100vh" flexDir="column" px={{sm: 0, lg: 5}} py={8} overflowX="hidden" bg={mode("#fafbfd", "gray.800")}>
-                    {tokens &&  <TopNavBar/>}
-                    {walletAddress
-                        ? <>
-                            <ProtocolStats/>
-                            <ExpansionStats/>
-                            <BeefyVaults/>
-                            <Farms/>
-                            <BoardRoomMain/>
-                        </>
-                    : <ConnectDapp/>}
+                <Flex w="100vw" h="100vh" flexDir="column" px={5} py={8} overflowX="hidden" bg={mode("#fafbfd", "gray.800")}>
+                    <BrowserRouter>
+                        {tokens &&  <TopNavBar/>}
+
+                        <Routes>
+                            <Route path="/" element={<OverviewMain/>}/>
+                            <Route path="/overview" element={<OverviewMain/>}/>
+                            <Route path="/earnings" element={<EarningsMain/>}/>
+
+
+                        </Routes>
+                    </BrowserRouter>
                 </Flex>
             </WalletAddressContext.Provider>
         </TokenPricesContext.Provider>

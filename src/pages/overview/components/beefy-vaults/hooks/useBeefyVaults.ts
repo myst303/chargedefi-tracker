@@ -35,7 +35,6 @@ export const useBeefyVault = () => {
         const staticDollarValue = tokens.staticLp * staticLPBalance
         const chargeDollarValue = tokens.chargeLp * chargeLPBalance
 
-        // 866.384
 
         setStaticVault({
             lp: formatUS(staticLPBalance),
