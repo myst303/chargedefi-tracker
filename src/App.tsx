@@ -10,14 +10,10 @@ import "./common/assets/main.css"
 import {busdAddress, CHARGE_LP_ADDRESS, CHARGE_ADDRESS, STATIC_LP_ADDRESS, staticAddress} from "./common/helpers/consts";
 import chargeABI from "./common/contracts/charge_abi.json"
 import lpABI from "./pages/overview/contracts/lp-token-boardroom.json"
-<<<<<<< HEAD
 import {QueryClient, QueryClientProvider} from "react-query";
-=======
 import {BrowserRouter , Routes, Route, Link} from "react-router-dom";
 import {default as OverviewMain} from "./pages/overview/Main"
 import {default as EarningsMain} from "./pages/earnings/Main"
-
->>>>>>> earnings-tab
 
 const Web3 = require("web3")
 const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
