@@ -1,13 +1,19 @@
 import {useEffect, useState} from "react";
 import {useWalletAddress} from "../contexts/WalletAddressContext";
 import {useDisclosure} from "@chakra-ui/react";
+import {useMutation} from "react-query";
+import * as api from "../api/api"
+
 
 
 export const useWalletProvider = () => {
+
     const {isOpen, onOpen, onClose} = useDisclosure()
     const {walletAddress, setWalletAddress} = useWalletAddress()!;
+
     const wallet = localStorage.getItem("wallet")
 
+    const postWalletAddress = useMutation("postAddress", api.postWalletAddress)
 
     useEffect(() => {
         // invoke method on bsc e.g.
@@ -50,7 +56,7 @@ export const useWalletProvider = () => {
     const onConnectWallet = async (walletProvider: string) => {
         switch (walletProvider){
             case "Binance Chain Wallet":
-                await connectBinanceWallet()
+                await _connectBinanceWallet()
                 break;
             case "Metamask":
                 await _connectMetamaskWallet()
@@ -68,6 +74,7 @@ export const useWalletProvider = () => {
             }
             const accounts = await ethereum.request({ method: "eth_requestAccounts" });
             setWalletAddress(accounts[0]);
+            postWalletAddress.mutate(accounts[0])
             localStorage.setItem("wallet", "metamask")
             onClose()
         } catch (error) {
@@ -76,7 +83,7 @@ export const useWalletProvider = () => {
         }
     }
 
-    const connectBinanceWallet = async() => {
+    const _connectBinanceWallet = async() => {
         const { BinanceChain  } = window as any
         try {
             if (!BinanceChain) {
@@ -84,6 +91,7 @@ export const useWalletProvider = () => {
             }
             const accounts = await BinanceChain.request({ method: "eth_requestAccounts" });
             setWalletAddress(accounts[0]);
+            postWalletAddress.mutate(accounts[0])
             localStorage.setItem("wallet", "binance")
             onClose()
         } catch (error) {

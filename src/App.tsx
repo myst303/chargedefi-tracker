@@ -16,6 +16,7 @@ import Farms from "./pages/overview/components/farms/Farms";
 import {busdAddress, CHARGE_LP_ADDRESS, CHARGE_ADDRESS, STATIC_LP_ADDRESS, staticAddress} from "./common/helpers/consts";
 import chargeABI from "./common/contracts/charge_abi.json"
 import lpABI from "./pages/overview/contracts/lp-token-boardroom.json"
+import {QueryClient, QueryClientProvider} from "react-query";
 
 const Web3 = require("web3")
 const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
@@ -27,6 +28,8 @@ function App() {
 
     const [tokens, setTokens] = useState<any>({})
     const providedTokens = useMemo<any>(() => ({ tokens, setTokens }), [tokens, setTokens])
+
+    const queryClient = new QueryClient()
 
     const getTokenPrices = async () => {
         const busdToken = new web3.eth.Contract(chargeABI, busdAddress, {from: walletAddress})
@@ -71,31 +74,32 @@ function App() {
             })
     }
 
-
-
     useEffect(() => {
         getTokenPrices()
         setInterval(() => getTokenPrices(), 300000)
     }, [])
 
-    return (
-        <TokenPricesContext.Provider value={providedTokens}>
-            <WalletAddressContext.Provider value={providedWallet}>
-                <Flex w="100vw" h="100vh" flexDir="column" px={{sm: 0, lg: 5}} py={8} overflowX="hidden" bg={mode("#fafbfd", "gray.800")}>
-                    {tokens &&  <TopNavBar/>}
-                    {walletAddress
-                        ? <>
-                            <ProtocolStats/>
-                            <ExpansionStats/>
-                            <BeefyVaults/>
-                            <Farms/>
-                            <BoardRoomMain/>
-                        </>
-                    : <ConnectDapp/>}
-                </Flex>
-            </WalletAddressContext.Provider>
-        </TokenPricesContext.Provider>
 
+
+    return (
+        <QueryClientProvider client={queryClient}>
+            <TokenPricesContext.Provider value={providedTokens}>
+                <WalletAddressContext.Provider value={providedWallet}>
+                    <Flex w="100vw" h="100vh" flexDir="column" px={{sm: 0, lg: 5}} py={8} overflowX="hidden" bg={mode("#fafbfd", "gray.800")}>
+                        {tokens &&  <TopNavBar/>}
+                        {walletAddress
+                            ? <>
+                                <ProtocolStats/>
+                                <ExpansionStats/>
+                                <BeefyVaults/>
+                                <Farms/>
+                                <BoardRoomMain/>
+                            </>
+                        : <ConnectDapp/>}
+                    </Flex>
+                </WalletAddressContext.Provider>
+            </TokenPricesContext.Provider>
+        </QueryClientProvider>
     )
 }
 export default App
