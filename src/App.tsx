@@ -21,10 +21,10 @@ const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 function App() {
 
     const [walletAddress, setWalletAddress] = useState<string>();
-    const providedWallet = useMemo<any>(() => ({ walletAddress, setWalletAddress }), [walletAddress, setWalletAddress])
+    const providedWallet = useMemo<any>(() => ({walletAddress, setWalletAddress}), [walletAddress, setWalletAddress])
 
     const [tokens, setTokens] = useState<any>({})
-    const providedTokens = useMemo<any>(() => ({ tokens, setTokens }), [tokens, setTokens])
+    const providedTokens = useMemo<any>(() => ({tokens, setTokens}), [tokens, setTokens])
 
     const queryClient = new QueryClient()
 
@@ -42,7 +42,7 @@ function App() {
         const busdPrice = 1
 
         // Static LP token calculations
-        const tokensInPool0 =  (await staticToken.methods.balanceOf(STATIC_LP_ADDRESS).call()) / 1e18
+        const tokensInPool0 = (await staticToken.methods.balanceOf(STATIC_LP_ADDRESS).call()) / 1e18
         const busdInPool0 = (await busdToken.methods.balanceOf(STATIC_LP_ADDRESS).call()) / 1e18;
         const totalLPtokens0 = (await staticLpToken.methods.totalSupply().call()) / 1e18;
 
@@ -52,7 +52,7 @@ function App() {
         const staticLp = tokenPerLP0 * staticPrice + busdPerLP0 * busdPrice;
 
         // Charge LP token calculations
-        const tokensInPool1 =  (await chargeToken.methods.balanceOf(CHARGE_LP_ADDRESS).call()) / 1e18
+        const tokensInPool1 = (await chargeToken.methods.balanceOf(CHARGE_LP_ADDRESS).call()) / 1e18
         const busdInPool1 = (await busdToken.methods.balanceOf(CHARGE_LP_ADDRESS).call()) / 1e18;
         const totalLPtokens1 = (await chargeLpToken.methods.totalSupply().call()) / 1e18;
 
@@ -76,44 +76,23 @@ function App() {
         setInterval(() => getTokenPrices(), 300000)
     }, [])
 
-<<<<<<< HEAD
-=======
-    return (
-        <TokenPricesContext.Provider value={providedTokens}>
-            <WalletAddressContext.Provider value={providedWallet}>
-                <Flex w="100vw" h="100vh" flexDir="column" px={5} py={8} overflowX="hidden" bg={mode("#fafbfd", "gray.800")}>
-                    <BrowserRouter>
-                        {tokens &&  <TopNavBar/>}
-
-                        <Routes>
-                            <Route path="/" element={<OverviewMain/>}/>
-                            <Route path="/overview" element={<OverviewMain/>}/>
-                            <Route path="/earnings" element={<EarningsMain/>}/>
-
-
-                        </Routes>
-                    </BrowserRouter>
-                </Flex>
-            </WalletAddressContext.Provider>
-        </TokenPricesContext.Provider>
->>>>>>> earnings-tab
-
-
     return (
         <QueryClientProvider client={queryClient}>
             <TokenPricesContext.Provider value={providedTokens}>
                 <WalletAddressContext.Provider value={providedWallet}>
-                    <Flex w="100vw" h="100vh" flexDir="column" px={{sm: 0, lg: 5}} py={8} overflowX="hidden" bg={mode("#fafbfd", "gray.800")}>
-                        {tokens &&  <TopNavBar/>}
-                        {walletAddress
-                            ? <>
-                                <ProtocolStats/>
-                                <ExpansionStats/>
-                                <BeefyVaults/>
-                                <Farms/>
-                                <BoardRoomMain/>
-                            </>
-                        : <ConnectDapp/>}
+                    <Flex w="100vw" h="100vh" flexDir="column" px={5} py={8} overflowX="hidden"
+                          bg={mode("#fafbfd", "gray.800")}>
+                        <BrowserRouter>
+                            {tokens && <TopNavBar/>}
+
+                            <Routes>
+                                <Route path="/" element={<OverviewMain/>}/>
+                                <Route path="/overview" element={<OverviewMain/>}/>
+                                <Route path="/earnings" element={<EarningsMain/>}/>
+
+
+                            </Routes>
+                        </BrowserRouter>
                     </Flex>
                 </WalletAddressContext.Provider>
             </TokenPricesContext.Provider>
