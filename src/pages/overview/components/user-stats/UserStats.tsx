@@ -126,7 +126,7 @@ const UserStats = () => {
                         Beefy
                     </Checkbox>
                     <Checkbox isChecked={includeFarms} onChange={e => setIncludeFarms(e.target.checked)}>
-                        Farms - hallo
+                        Farms
                     </Checkbox>
                     <Checkbox isChecked={includeBoardroom} onChange={e => setIncludeBoardroom(e.target.checked)}>
                         Boardroom
