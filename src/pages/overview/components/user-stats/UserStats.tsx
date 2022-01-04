@@ -6,22 +6,32 @@ import {useBeefyVault} from '../beefy-vaults/hooks/useBeefyVaults';
 import {useFarms} from "../farms/hooks/useFarms";
 import {useBoardRoomCharge} from "../boardroom/hooks/useBoardroomCharge";
 import {useBoardRoomLp} from "../boardroom/hooks/useBoardRoomLp";
+import {useWalletCharge} from "../wallet/hooks/useWalletCharge";
+import {useWalletStatic} from "../wallet/hooks/useWalletStatic";
 import { isNumber } from '@chakra-ui/utils';
 
 const UserStats = () => {
 
     const [investment, setInvestment] = useState<string>("");
 
+    const [includeWallet, setIncludeWallet] = useState<boolean>(true);
     const [includeBeefy, setIncludeBeefy] = useState<boolean>(true);
     const [includeFarms, setIncludeFarms] = useState<boolean>(true);
     const [includeBoardroom, setIncludeBoardroom] = useState<boolean>(true);
 
+    const { chargeStats } = useWalletCharge()
+    const { staticStats } = useWalletStatic()
     const { staticVault, chargeVault } = useBeefyVault();
     const { stats } = useFarms();
     const statsBoardRoomLp = useBoardRoomLp()
     const statsBoardRoomCharge = useBoardRoomCharge()
 
     let totalValue = 0;
+    if (includeWallet) {
+        totalValue += Number(chargeStats.value);
+        totalValue += Number(staticStats.value);
+    }
+
     if (includeBeefy) {
         totalValue += Number(chargeVault.toDollar);
         totalValue += Number(staticVault.toDollar);
@@ -42,12 +52,45 @@ const UserStats = () => {
         totalValue += Number(statsBoardRoomCharge.stats.earnedValue);
     }
 
+    const cookies = new Cookies();
+
+    if (totalValue > 0) {
+        let historical_data = new Map();
+
+        // if we have historical data save in cookie, retrieve it
+        if (cookies.get('historical_data') != undefined ) {
+            historical_data = new Map(Object.entries(cookies.get('historical_data')));
+        }
+
+        const today = (new Date(new Date().setHours(0,0,0,0))).toLocaleDateString();
+        const walletTotal = Number(chargeStats.value) + Number(staticStats.value);
+        const beefyTotal = Number(chargeVault.toDollar) + Number(staticVault.toDollar);
+        const farmTotal = Number(stats.staticLpValue) + Number(stats.staticRewardValue) + Number(stats.chargeLpValue) + Number(stats.chargeRewardValue);
+        const boardroomTotal = Number(statsBoardRoomLp.stats.value) + Number(statsBoardRoomLp.stats.chargeValue) + Number(statsBoardRoomLp.stats.staticValue) + Number(statsBoardRoomCharge.stats.value) + Number(statsBoardRoomCharge.stats.earnedValue);
+        const total = walletTotal + beefyTotal + farmTotal + boardroomTotal;
+        const roiToday = total/Number(investment)-1;
+
+        const historical_object = {
+            investment: investment,
+            wallet: walletTotal,
+            beefy: beefyTotal,
+            farms: farmTotal,
+            boardroom: boardroomTotal,
+            total: total,
+            roi: roiToday,
+        };
+
+        historical_data.set(today, historical_object);
+        const hist_string = JSON.stringify(Object.fromEntries(historical_data));
+        cookies.set('historical_data', hist_string, { path: '/' });
+        console.log("saving new value to cookie: " + hist_string);
+    }
+
     let roi = 0;
 
     if (isNumber(Number(investment)) && Number(investment) != 0) {
         roi = (totalValue/Number(investment)-1)*100;
     }
-    const cookies = new Cookies();
 
     function updateInvestment (value:string) {
         const numberValue = Number(value);
@@ -76,6 +119,9 @@ const UserStats = () => {
                     </InputGroup>
                 </Flex>
                 <Flex w={{base: "100%", lg: "60%"}}>
+                    <Checkbox isChecked={includeWallet} onChange={e => setIncludeWallet(e.target.checked)}>
+                        Wallet
+                    </Checkbox>
                     <Checkbox isChecked={includeBeefy} onChange={e => setIncludeBeefy(e.target.checked)}>
                         Beefy
                     </Checkbox>

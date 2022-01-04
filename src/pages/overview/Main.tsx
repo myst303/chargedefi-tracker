@@ -4,6 +4,7 @@ import ExpansionStats from "./components/protocol-stats/ExpansionStats/Expansion
 import BeefyVaults from "./components/beefy-vaults/BeefyVaults";
 import Farms from "./components/farms/Farms";
 import UserStats from "./components/user-stats/UserStats";
+import Wallet from "./components/wallet/Wallet";
 import {default as BoardRoomMain} from "./components/boardroom/BoardRoom";
 import {useWalletAddress} from "../../common/contexts/WalletAddressContext";
 import ConnectDapp from "../../common/components/ConnectDapp/ConnectDapp";
@@ -22,6 +23,7 @@ const Main = () => {
             <BeefyVaults/>
             <Farms/>
             <BoardRoomMain/>
+            <Wallet/>
             <UserStats/>
         </>
     );
