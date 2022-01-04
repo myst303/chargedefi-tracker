@@ -3,6 +3,9 @@ import React, {useState} from 'react';
 import {useWalletAddress} from "../../contexts/WalletAddressContext";
 import {isAddress} from "../../helpers/web3-helpers";
 import {IoWalletOutline} from "@react-icons/all-files/io5/IoWalletOutline";
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const ConnectDapp = () => {
 
@@ -10,9 +13,14 @@ const ConnectDapp = () => {
     const [addr, setAddr] = useState<string>()
     const toast = useToast()
 
+    if (cookies.get('addr') !== undefined) {
+        setWalletAddress(cookies.get('addr'));
+    }
+
     const onSubmit = () => {
         if(isAddress(addr!)){
             setWalletAddress(addr)
+            cookies.set('addr', addr, { path: '/' });
         } else {
             toast({
                 title: "Invalid address",
@@ -37,7 +45,7 @@ const ConnectDapp = () => {
                         pointerEvents='none'
                         children={<IoWalletOutline size="25px"  />}
                     />
-                    <Input placeholder="Walled address..." size="lg" onChange={e => setAddr(e.target.value)}/>
+                    <Input placeholder="Wallet address..." size="lg" onChange={e => setAddr(e.target.value)}/>
                 </InputGroup>
                 <Button mx={2} size="lg" colorScheme="blue" onClick={onSubmit} isDisabled={!addr}>Submit</Button>
             </Flex>
