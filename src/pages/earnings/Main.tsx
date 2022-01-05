@@ -1,30 +1,68 @@
-import { Flex, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { Flex, Heading, Img, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
 import React from 'react';
-import BeefyEarningsTable from "./components/beefy-vaults/BeefyEarningsTable";
+import {getTokenUrl} from "../../common/helpers/util";
+import BoardRoomLpTable from "./components/boardroom/BoardRoomLpTable";
+import {useWalletAddress} from "../../common/contexts/WalletAddressContext";
+import BoardRoomChargeTable from "./components/boardroom/BoardRoomChargeTable";
+import BeefyStaticTable from "./components/beefy-vaults/BeefyStaticTable";
+import BeefyChargeTable from "./components/beefy-vaults/BeefyChargeTable";
+import FarmChargeTable from "./components/farms/FarmChargeTable";
+import FarmStaticTable from "./components/farms/FarmStaticTable";
 
 const Main = () => {
+    const { walletAddress} = useWalletAddress()!
+
+    if(!walletAddress){
+        return <Heading mx="auto" my="auto">Connect Wallet</Heading>
+    }
     return (
         <Flex flexDir="column" py={5}>
             <Tabs isFitted>
                 <TabList>
-                    <Tab>Overview</Tab>
-                    <Tab>Boardroom</Tab>
-                    <Tab>Farms</Tab>
-                    <Tab>Beefy Vaults</Tab>
-
+                    <Tab>
+                        <Img src={getTokenUrl("static-busd")} w="50px" h="30px"/>
+                        <Text px={2}>Boardroom LP</Text>
+                    </Tab>
+                    <Tab>
+                        <Img src={getTokenUrl("charge")} w="30px" h="30px"/>
+                        <Text px={2}>Boardroom</Text>
+                    </Tab>
+                    <Tab>
+                        <Img src={getTokenUrl("charge-busd")} w="50px" h="30px"/>
+                        <Text px={2}>Farm</Text>
+                    </Tab>
+                    <Tab>
+                        <Img src={getTokenUrl("static-busd")} w="50px" h="30px"/>
+                        <Text px={2}>Farm</Text>
+                    </Tab>
+                    <Tab>
+                        <Img src={getTokenUrl("charge-busd")} w="50px" h="30px"/>
+                        <Text px={2}>Beefy</Text>
+                    </Tab>
+                    <Tab>
+                        <Img src={getTokenUrl("static-busd")} w="50px" h="30px"/>
+                        <Text px={2}>Beefy</Text>
+                    </Tab>
                 </TabList>
 
                 <TabPanels>
                     <TabPanel>
-                        <p>one!</p>
+                        <BoardRoomLpTable/>
                     </TabPanel>
                     <TabPanel>
-                        <p>two!</p>
+                        <BoardRoomChargeTable/>
                     </TabPanel>
                     <TabPanel>
+                        <FarmChargeTable/>
                     </TabPanel>
                     <TabPanel>
-                        <BeefyEarningsTable/>
+                        <FarmStaticTable/>
+                    </TabPanel>
+                    <TabPanel>
+                        <BeefyChargeTable/>
+                    </TabPanel>
+                    <TabPanel>
+                        <BeefyStaticTable/>
                     </TabPanel>
                 </TabPanels>
             </Tabs>
