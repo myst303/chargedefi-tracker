@@ -6,8 +6,6 @@ import {useBeefyVault} from '../beefy-vaults/hooks/useBeefyVaults';
 import {useFarms} from "../farms/hooks/useFarms";
 import {useBoardRoomCharge} from "../boardroom/hooks/useBoardroomCharge";
 import {useBoardRoomLp} from "../boardroom/hooks/useBoardRoomLp";
-import {useWalletCharge} from "../wallet/hooks/useWalletCharge";
-import {useWalletStatic} from "../wallet/hooks/useWalletStatic";
 import { isNumber } from '@chakra-ui/utils';
 import {useWalletCharge} from "../wallet/hooks/useWalletCharge";
 import {useWalletStatic} from "../wallet/hooks/useWalletStatic";
@@ -22,11 +20,6 @@ type Props = {
 const UserStats = ({ includeBeefy, includeFarms, includeBoardroom, includeWallet} : Props) => {
 
     const [investment, setInvestment] = useState<string>("");
-
-    const [includeWallet, setIncludeWallet] = useState<boolean>(true);
-    const [includeBeefy, setIncludeBeefy] = useState<boolean>(true);
-    const [includeFarms, setIncludeFarms] = useState<boolean>(true);
-    const [includeBoardroom, setIncludeBoardroom] = useState<boolean>(true);
 
     const { chargeStats } = useWalletCharge()
     const { staticStats } = useWalletStatic()
