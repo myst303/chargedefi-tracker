@@ -1,6 +1,6 @@
-import { Flex, Heading, Stat, Text, Box,  useColorModeValue as mode, SimpleGrid, Input, Checkbox, useToast, InputLeftElement, InputGroup } from '@chakra-ui/react';
+import { Flex, Heading, SimpleGrid, Input, FormLabel, FormControl } from '@chakra-ui/react';
 import StatCard from "../../../../common/components/StatCard/StatCard";
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Cookies from 'universal-cookie';
 import {useBeefyVault} from '../beefy-vaults/hooks/useBeefyVaults';
 import {useFarms} from "../farms/hooks/useFarms";
@@ -8,13 +8,15 @@ import {useBoardRoomCharge} from "../boardroom/hooks/useBoardroomCharge";
 import {useBoardRoomLp} from "../boardroom/hooks/useBoardRoomLp";
 import { isNumber } from '@chakra-ui/utils';
 
-const UserStats = () => {
+type Props = {
+    includeBeefy: boolean
+    includeFarms: boolean
+    includeBoardroom: boolean
+}
+
+const UserStats = ({ includeBeefy, includeFarms, includeBoardroom}: Props) => {
 
     const [investment, setInvestment] = useState<string>("");
-
-    const [includeBeefy, setIncludeBeefy] = useState<boolean>(true);
-    const [includeFarms, setIncludeFarms] = useState<boolean>(true);
-    const [includeBoardroom, setIncludeBoardroom] = useState<boolean>(true);
 
     const { staticVault, chargeVault } = useBeefyVault();
     const { stats } = useFarms();
@@ -69,22 +71,11 @@ const UserStats = () => {
         <Flex px={5} py={5} flexDir="column">
             <Heading>User statistics</Heading>
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing="6" pt={5}>
-                <Flex w={{base: "100%", lg: "60%"}}>
-                    <InputGroup size="lg">
-                        <Text>Total Investment</Text>
+                <Flex w="100%">
+                    <FormControl>
+                        <FormLabel>Total Investment</FormLabel>
                         <Input value={investment} size="lg" onChange={e => updateInvestment(e.target.value)}/>
-                    </InputGroup>
-                </Flex>
-                <Flex w={{base: "100%", lg: "60%"}}>
-                    <Checkbox isChecked={includeBeefy} onChange={e => setIncludeBeefy(e.target.checked)}>
-                        Beefy
-                    </Checkbox>
-                    <Checkbox isChecked={includeFarms} onChange={e => setIncludeFarms(e.target.checked)}>
-                        Farms - hallo
-                    </Checkbox>
-                    <Checkbox isChecked={includeBoardroom} onChange={e => setIncludeBoardroom(e.target.checked)}>
-                        Boardroom
-                    </Checkbox>
+                    </FormControl>
                 </Flex>
                 <StatCard label={"Total Value"} value={"$" + totalValue.toFixed(2)} />
                 <StatCard label={"Return on investment"} value={roi.toFixed(2) + '%'}/>
