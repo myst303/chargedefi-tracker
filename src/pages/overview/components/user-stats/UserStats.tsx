@@ -6,6 +6,8 @@ import {useBeefyVault} from '../beefy-vaults/hooks/useBeefyVaults';
 import {useFarms} from "../farms/hooks/useFarms";
 import {useBoardRoomCharge} from "../boardroom/hooks/useBoardroomCharge";
 import {useBoardRoomLp} from "../boardroom/hooks/useBoardRoomLp";
+import {useWalletCharge} from "../wallet/hooks/useWalletCharge";
+import {useWalletStatic} from "../wallet/hooks/useWalletStatic";
 import { isNumber } from '@chakra-ui/utils';
 import {useWalletCharge} from "../wallet/hooks/useWalletCharge";
 import {useWalletStatic} from "../wallet/hooks/useWalletStatic";
@@ -21,8 +23,13 @@ const UserStats = ({ includeBeefy, includeFarms, includeBoardroom, includeWallet
 
     const [investment, setInvestment] = useState<string>("");
 
-    const { chargeStats } = useWalletCharge();
-    const { staticStats } = useWalletStatic();
+    const [includeWallet, setIncludeWallet] = useState<boolean>(true);
+    const [includeBeefy, setIncludeBeefy] = useState<boolean>(true);
+    const [includeFarms, setIncludeFarms] = useState<boolean>(true);
+    const [includeBoardroom, setIncludeBoardroom] = useState<boolean>(true);
+
+    const { chargeStats } = useWalletCharge()
+    const { staticStats } = useWalletStatic()
     const { staticVault, chargeVault } = useBeefyVault();
     const { stats } = useFarms();
     const statsBoardRoomLp = useBoardRoomLp()
@@ -87,7 +94,7 @@ const UserStats = ({ includeBeefy, includeFarms, includeBoardroom, includeWallet
         cookies.set('historical_data', hist_string, { path: '/' });
         console.log("saving new value to cookie: " + hist_string);
     }
-    
+
     let roi = 0;
 
     if (isNumber(Number(investment)) && Number(investment) != 0) {

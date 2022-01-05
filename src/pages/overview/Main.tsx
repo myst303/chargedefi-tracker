@@ -5,6 +5,7 @@ import BeefyVaults from "./components/beefy-vaults/BeefyVaults";
 import Farms from "./components/farms/Farms";
 import Wallet from "./components/wallet/Wallet";
 import UserStats from "./components/user-stats/UserStats";
+import Wallet from "./components/wallet/Wallet";
 import {default as BoardRoomMain} from "./components/boardroom/BoardRoom";
 import {useWalletAddress} from "../../common/contexts/WalletAddressContext";
 import ConnectDapp from "../../common/components/ConnectDapp/ConnectDapp";
@@ -38,6 +39,13 @@ const Main = () => {
             {includeFarms && <Farms/> }
             {includeBoardroom && <BoardRoomMain/> }
             <UserStats includeBeefy={includeBeefy} includeBoardroom={includeBoardroom} includeFarms={includeFarms} includeWallet={includeWallet}/>
+            <ProtocolStats/>
+            <ExpansionStats/>
+            <BeefyVaults/>
+            <Farms/>
+            <BoardRoomMain/>
+            <Wallet/>
+            <UserStats/>
         </>
     );
 };
